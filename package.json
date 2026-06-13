@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "npm install --prefix Frontend && npm run build --prefix Frontend"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "vercel": "^54.13.0"
+  }
+}
