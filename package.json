@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "npm install --prefix Frontend && npm run build --prefix Frontend"
+    "build": "npm install --prefix Frontend && npm run build --prefix Frontend && npm install --prefix Backend",
+    "start": "node Backend/server.js"
   },
   "engines": {
     "node": ">=20.0.0"

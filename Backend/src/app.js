@@ -1,6 +1,7 @@
 const express = require("express")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
+const path = require("path")
 
 const app = express()
 
@@ -20,6 +21,17 @@ const interviewRouter = require("./routes/interview.routes")
 app.use("/api/auth", authRouter)
 app.use("/api/interview", interviewRouter)
 
+// Serve frontend static files
+const frontendDistPath = path.join(__dirname, "../../Frontend/dist")
+app.use(express.static(frontendDistPath))
 
+// Handle React SPA routing
+app.get("*", (req, res) => {
+    res.sendFile(path.join(frontendDistPath, "index.html"), (err) => {
+        if (err) {
+            res.status(404).send("Frontend build not found. Make sure to build the frontend first.")
+        }
+    })
+})
 
 module.exports = app
